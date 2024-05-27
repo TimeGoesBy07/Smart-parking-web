@@ -36,6 +36,7 @@ function CarParkArchitecture() {
     const vehicleStatusAPI = 'https://us-central1-smart-parking-369015.cloudfunctions.net/updateVehicleStatus'
     const getUserAPI = 'https://us-central1-smart-parking-369015.cloudfunctions.net/findUserByEmail'
     const slotUpdateAPI = 'https://us-central1-smart-parking-369015.cloudfunctions.net/postParkingLotStatus'
+    const getCarAPI = 'https://us-central1-smart-parking-369015.cloudfunctions.net/findCarbyPlate'
     const [areaStatus, setareaStatus] = useState([])
     const [page, pagechange] = useState(0)
     const [rowperpage, rowperpagechange] = useState(5)
@@ -136,31 +137,46 @@ function CarParkArchitecture() {
     const handleClear = (string) => {
         setLoading(true)
         const email = /\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b/g
-        var mySubString = string.substring(string.indexOf(".com ") + 5)
+        const startIndex = string.indexOf("-") + 2 // Add 2 to skip the space after the hyphen
+        const endIndex = string.indexOf(" ", startIndex)
+        const extractedValue = string.substring(startIndex, endIndex)
+        console.log(extractedValue)
 
         axios.get(getUserAPI, { params: { email: string.match(email)[0] } }).then(res => {
-            let temp = Object.values(Object.values(res.data)[0].vehiclelist).filter(element => element.registrationPlate === mySubString)
+            // let temp = Object.values(Object.values(res.data)[0].vehiclelist).filter(element => element.registrationPlate === extractedValue)
 
-            axios.post(vehicleStatusAPI, {
-                uid: Object.values(res.data)[0].id,
-                key: Object.values(res.data)[0].key,
-                isBooking: false,
-                bookStart: '',
-                bookLocation: '',
-                vehicle: temp[0].key,
-                qrCheck: false,
-                slot: ''
-            }).then(() => {
-                axios.post(slotUpdateAPI, {
-                    key: key,
-                    id: id,
-                    slot: temp[0].slot,
-                    status: 'empty'
+            axios.get(getCarAPI, {
+                params: {
+                    plate: extractedValue,
+                    uid: Object.values(res.data)[0].id,
+                    key: Object.values(res.data)[0].key
+                }
+            }).then((response) => {
+                console.log('console ', response.data)
+                axios.post(vehicleStatusAPI, {
+                    uid: Object.values(res.data)[0].id,
+                    key: Object.values(res.data)[0].key,
+                    vehicle: response.data.key,
+                    isBooking: false,
+                    bookStart: '',
+                    bookEnd: '',
+                    bookLocation: '',
+                    requireChecking: true,
+                    slot: '',
+                    parkId: '',
+                    parkKey: ''
                 }).then(() => {
-                    setLoading(false)
-                })
-            })
-        })
+                    axios.post(slotUpdateAPI, {
+                        key: key,
+                        id: id,
+                        slot: response.data.slot,
+                        status: 'empty'
+                    }).then(() => {
+                        setLoading(false)
+                    }).catch(err => console.log(err))
+                }).catch(err => console.log(err))
+            }).catch(err => console.log(err))
+        }).catch(err => console.log(err))
     }
 
     useEffect(() => {
