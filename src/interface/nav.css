@@ -1,0 +1,11 @@
+header {
+    background-color: white;
+    position: sticky;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 0 5px 0 black;
+}
+
+header * {
+    display: inline;
+}

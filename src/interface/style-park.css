@@ -1,0 +1,168 @@
+/* Colors
+Dark Gray #5D5C61
+Light Gray #BAB2B5
+Light Blue #7395AE
+Dark Blue #557A95
+Sand #B1A296
+*/
+
+body {
+    background-color: #7395AE;
+    height: 100%
+}
+
+h2 {
+    color: #f5f5f5;
+    text-align: center;
+}
+
+#employeePad {
+    float: left;
+    border: 1px solid #000;
+    background-color: #557A95;
+    text-align: center;
+    margin: 10px 10px 10px 10px;
+}
+
+.pad {
+    height: 50px;
+    max-height: 10px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.padLabel {
+    color: #ffffff;
+    background-color: #557A95;
+    text-align: center;
+    font-size: 20px;
+}
+
+.card {
+    height: 75px;
+    width: 100%;
+    background-color: #B1A296;
+    border: 1px solid #ffffff;
+    color: #ffffff;
+    margin: 15px;
+    cursor: -webkit-grab;
+    cursor: grab;
+}
+
+.card:hover {
+    background-color: #5D5C61;
+}
+
+.mapContainer {
+    border: 1px solid #000000;
+    overflow: auto;
+    height: 800px;
+    background-color: #f5f5f5;
+    width: 100%;
+    margin-top: 10px;
+    align-items: center;
+}
+
+#floorPlan {
+    position: relative;
+    margin: auto;
+    margin-top: 20px;
+}
+
+    #floorPlan th {
+        height: 20px;
+        width: 130px;
+        background-color: #7395AE;
+        border: 1px solid #666
+    }
+
+    #floorPlan td {
+        height: 125px;
+        overflow: hidden;
+        max-width: 130px;
+        max-height: 150px;
+    }
+
+.cube {
+    border: 1px solid #666
+}
+
+.add {
+    height: 40px;
+    background-color: #f5f5f5;
+    border: 1px solid #000000;
+    color: #000000;
+    margin-bottom: 5px;
+    border-radius: 10px;
+}
+
+.add:hover {
+        color: #f5f5f5;
+        background-color: #5D5C61;
+}
+
+.aboutLabel {
+    color: #404040;
+    text-align: right;
+    width: 100px;
+}
+
+.aboutTable {
+    float: right;
+    background-color: #557A95;
+    text-align: center;
+    margin: 10px 10px 10px 5px;
+    border: 1px solid #000;
+    color: white;
+    height: 10px;
+    display: none;
+}
+
+.aboutTable td {
+    text-align: left;
+    padding: 3px;
+}
+
+.aboutHead {
+    text-align: left;
+    font-size: 20px;
+    color: #ffffff;
+    background-color: #B1A296;
+}
+
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+}
+
+.close {
+    color: #000000;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+    .close:hover,
+    .close:focus {
+        color: #000;
+        text-decoration: none;
+        cursor: pointer;
+    }
