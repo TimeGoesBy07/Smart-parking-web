@@ -1,6 +1,8 @@
 # Some images of the dashboard
 
-Please note that this project was not aimed for UI/UX purpose. We focused more on implementing real-time data updates and synchronization of parking slot status across both web and mobile platforms.
+Please note that this project was not aimed for UI/UX purpose. We focused more on implementing real-time data updates and synchronization of parking slot status across web and mobile platforms.
+
+There is no video demo left, only images because the university deleted the google email in which we stored it. We apologise about that.
 
 ![23](https://github.com/user-attachments/assets/c77390e8-c9f3-4e41-a265-99a8ce2fb9f1)
 ![24](https://github.com/user-attachments/assets/06ae90eb-39e9-4883-80d9-4da5400ed7b7)
